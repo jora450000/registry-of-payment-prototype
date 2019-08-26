@@ -86,10 +86,10 @@ sub initialize {
 # You should change these variables only if you want to translate them into your language:
 #---------------------------------------------------------------------------------------------------------
 	# weekdays: must start with Saturday because January 1st of year 1 was a Saturday
-	@{$this->{weekdays}} = ("СБ", "ВС", "Пн", "Вт", "Ср", "Чт", "Пт");
+	@{$this->{weekdays}} = ("Г‘ГЃ", "Г‚Г‘", "ГЏГ­", "Г‚ГІ", "Г‘Г°", "Г—ГІ", "ГЏГІ");
 
 	# months: must start with January
-	@{$this->{months}} = ("Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь");
+	@{$this->{months}} = ("ГџГ­ГўГ Г°Гј", "Г”ГҐГўГ°Г Г«Гј", "ГЊГ Г°ГІ", "ГЂГЇГ°ГҐГ«Гј", "ГЊГ Г©", "Г€ГѕГ­Гј", "Г€ГѕГ«Гј", "ГЂГўГЈГіГ±ГІ", "Г‘ГҐГ­ГІГїГЎГ°Гј", "ГЋГЄГІГїГЎГ°Гј", "ГЌГ®ГїГЎГ°Гј", "Г„ГҐГЄГ ГЎГ°Гј");
 
 	# error messages
 	@{$this->{error}} = ("Year must be 1 - 3999!", "Month must be 1 - 12!");
@@ -371,7 +371,7 @@ sub _round {
 	return ($fl >= 0) ? int($fl + 0.5) : int($fl - 0.5);
 }
 
-#TestLine='АаБбВвГгДдЕеЁёЖжЗзИиЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЪъЫыЬьЭэЮюЯя';
+#TestLine='ГЂГ ГЃГЎГ‚ГўГѓГЈГ„Г¤Г…ГҐВЁВёГ†Г¦Г‡Г§Г€ГЁГ‰Г©ГЉГЄГ‹Г«ГЊГ¬ГЌГ­ГЋГ®ГЏГЇГђГ°Г‘Г±Г’ГІГ“ГіГ”ГґГ•ГµГ–Г¶Г—Г·ГГёГ™Г№ГљГєГ›Г»ГњГјГќГЅГћГѕГџГї';
 
 # print &TranslateWin1251ToUni($TestLine)."\n";
 
@@ -449,14 +449,14 @@ return;
       print $myCGI->start_html(-lang=>'ru-RU', -encoding=>"windows-1251", -charset=>"windows-1251",-title=>"registry for ar");
 #				-header=>"Content-type: text/html; charset=windows-1251\n\n");	
 
-#  за " . $my_month . "." . $my_year
+#  Г§Г  " . $my_month . "." . $my_year
 #		 print "$my_year.$my_month.$my_day";
 	$myCal = CALENDAR->new($my_year, $my_month);
 
 	for ($i=1;$i< 32;++$i){
 		$file = "c:/xampp/htdocs/".$my_year."-".(sprintf "%02d",$my_month)."-" . (sprintf "%02d",$i) .".htm";
 		if ( -e $file){
-  		 $myCal->viewEvent($i, $i, "#D0FFD0", "Реестр", "./index.pl");#?date=".$my_year."-".$my_month."-" . $i ); 
+  		 $myCal->viewEvent($i, $i, "#D0FFD0", "ГђГҐГҐГ±ГІГ°", "./index.pl");#?date=".$my_year."-".$my_month."-" . $i ); 
 	 }
 	}
 	($my_fmonth,$my_fyear) = ($my_month, $my_year);
@@ -473,7 +473,7 @@ return;
 
 		$file = "c:/xampp/htdocs/".$my_year."-".(sprintf "%02d",$my_month)."-" . (sprintf "%02d",$i) .".htm";
 		if ( -e $file){
-	 	 $myCal2->viewEvent($i, $i, "#D0FFD0", "Реестр", "./index.pl");#?date=".$my_year."-".$my_month."-" . $i ) ;
+	 	 $myCal2->viewEvent($i, $i, "#D0FFD0", "ГђГҐГҐГ±ГІГ°", "./index.pl");#?date=".$my_year."-".$my_month."-" . $i ) ;
 	   }
 	     
 	   }
@@ -604,12 +604,12 @@ function clearDirty(){
 }
 </script>
 	<form method = "post" action = "./calendar.pl?date=$mydate">
-	<strong> Реестр за $mydate </strong>  
+	<strong> ГђГҐГҐГ±ГІГ° Г§Г  $mydate </strong>  
 	<TEXTAREA cols=21 rows=20 id="comment" name = "COMMENT" onkeypress="startTimer()" onblur="stopTimer()">
-	 Резолюция </TEXTAREA>
+	 ГђГҐГ§Г®Г«ГѕГ¶ГЁГї </TEXTAREA>
 	 <br>
 	<input type= "HIDDEN" name = "HIDDEN" value = "$data">
-	<input type= "SUBMIT"  value = "подписать" onclick="clearDirty()">
+	<input type= "SUBMIT"  value = "ГЇГ®Г¤ГЇГЁГ±Г ГІГј" onclick="clearDirty()">
 	</form>
 
 <script type="text/javascript">
@@ -617,7 +617,7 @@ function clearDirty(){
 	dirty=false;
 
 	document.body.onbeforeunload=function(){
-		if(dirty) return "Резолюция не отправлена, выйти?";
+		if(dirty) return "ГђГҐГ§Г®Г«ГѕГ¶ГЁГї Г­ГҐ Г®ГІГЇГ°Г ГўГ«ГҐГ­Г , ГўГ»Г©ГІГЁ?";
 		else return null;
 	};
 </script>
@@ -630,10 +630,10 @@ Form
 	if (length($data) > 0){
 		open (CHECKBOOK, ">>".$myfile);	
 		print CHECKBOOK  (CGI::h2($data));	close CHECKBOOK;
-#		$msg_body=MIME::Base64::Perl::encode_base64("Резолюция на реестр за" . $mydate . "\n" . $data); 
-#		$msg_body =Encode::from_to("Резолюция на реестр за" . $mydate . "\n" . $data, "windows1251", "utf-8");
-		$msg_body ="Резолюция на реестр за" . $mydate . "\n" . $data;
-		$msg_subj ="Резолюция на реестр за" . $mydate;
+#		$msg_body=MIME::Base64::Perl::encode_base64("ГђГҐГ§Г®Г«ГѕГ¶ГЁГї Г­Г  Г°ГҐГҐГ±ГІГ° Г§Г " . $mydate . "\n" . $data); 
+#		$msg_body =Encode::from_to("ГђГҐГ§Г®Г«ГѕГ¶ГЁГї Г­Г  Г°ГҐГҐГ±ГІГ° Г§Г " . $mydate . "\n" . $data, "windows1251", "utf-8");
+		$msg_body ="ГђГҐГ§Г®Г«ГѕГ¶ГЁГї Г­Г  Г°ГҐГҐГ±ГІГ° Г§Г " . $mydate . "\n" . $data;
+		$msg_subj ="ГђГҐГ§Г®Г«ГѕГ¶ГЁГї Г­Г  Г°ГҐГҐГ±ГІГ° Г§Г " . $mydate;
 		to_utf8( \$msg_body, 'windows-1251' );
 		to_utf8( \$msg_subj, 'windows-1251' );
 
@@ -641,20 +641,20 @@ Form
 #		$msg_body =TranslateWin1251ToUni($msg_body);
 
                 $con=new Net::XMPP::Client();
-		$con->Connect(hostname=>"evrasia.ufanet.ru");
+		$con->Connect(hostname=>"xxx.xmpp.local");
 		$con->AuthSend(username=>"registry",
-                        password=>"reg0809",
+                        password=>"password",
                         resource=>"Registry");
 		my $msg=new Net::XMPP::Message();
-		$msg->SetMessage(to=>"sveta\@evrasia.ufanet.ru",
-                from=>"registry\@evrasia.ufanet.ru",
+		$msg->SetMessage(to=>"accounting\@xxx.xmppp.local",
+                from=>"registry\@xxx.xmppp.local",
 	        subject=>$msg_subj,
                 body=>$msg_body);
 		$con->Send($msg);
-		my $recepient="ирина\@evrasia.ufanet.ru";
+		my $recepient="cash\@xxx.xmppp.local";
 		to_utf8(\$recepient, 'windows-1251');
 		$msg->SetMessage(to=>$recepient,
-                from=>"registry\@evrasia.ufanet.ru",
+                from=>"registry\@xxx.xmppp.local",
 	        subject=>$msg_subj,
                 body=>$msg_body);
 		$con->Send($msg);
